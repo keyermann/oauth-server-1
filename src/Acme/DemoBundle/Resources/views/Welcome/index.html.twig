@@ -20,9 +20,41 @@
                 <a class="symfony-button-green" href="{{ path('fos_user_security_login') }}">Login with an existing user</a>
             </div>
         {% else %}
+
             <div class="block-demo">
-                <a class="symfony-button-green" href="{{ path('fos_user_security_login') }}">Create a new app</a>
+                <a class="symfony-button-green" href="{{ path('_new_app') }}">Create a new app</a>
             </div>
+
+            <div class="block-demo">
+                <a class="symfony-button-green" target="_blank" href="http://oauth.client">Launch client app</a>
+            </div>
+
+        {% endif %}
+
+        {% if app.user %}
+
+            <div class="clients" style="clear:both; width: 100%; margin-top: 20px;">
+
+                <h2>Apps created by you:</h2>
+                    {% for client in app.user.clients %}
+                       	<div>name: {{ client.name }}</div>
+                       	<div>auth token: {{ client.publicId }}</div>
+                       	<div>auth secret: {{ client.secret }}</div>
+                    {% else %}
+                    {% endfor %}
+
+            </div>
+
+            <div class="clients" style="clear:both; width: 100%; margin-top: 20px;">
+
+                <h2>Apps authorized by you:</h2>
+                    {% for authcode in app.user.authorizedApps %}
+                       	<div>name: {{ authcode.client.name }}</div>
+                    {% else %}
+                    {% endfor %}
+
+            </div>
+
         {% endif %}
     </div>
 

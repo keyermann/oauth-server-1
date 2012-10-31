@@ -1,0 +1,15 @@
+{% extends 'AcmeDemoBundle::layout.html.twig' %}
+
+{% block title %}
+    Create new oauth2 app
+{% endblock %}
+
+
+{% block content %}
+
+    <form action="{{ path('_new_app') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <input type="submit" />
+    </form>
+
+{% endblock %}
