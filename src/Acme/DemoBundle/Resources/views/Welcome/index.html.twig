@@ -1,0 +1,29 @@
+{% extends 'AcmeDemoBundle::layout.html.twig' %}
+
+{% block title %}Symfony - Welcome{% endblock %}
+
+{% block content_header '' %}
+
+{% block content %}
+    {% set version = constant('Symfony\\Component\\HttpKernel\\Kernel::MAJOR_VERSION') ~ '.' ~ constant('Symfony\\Component\\HttpKernel\\Kernel::MINOR_VERSION')%}
+
+    <h1>Welcome!</h1>
+
+    <p>Congratulations! You have successfully installed a new Symfony application.</p>
+
+    <div class="symfony-blocks-welcome">
+        <div class="block-quick-tour">
+            <a class="symfony-button-green" href="{{ path('fos_user_registration_register') }}">Register a new user</a>
+        </div>
+        {% if not app.user %}
+            <div class="block-demo">
+                <a class="symfony-button-green" href="{{ path('fos_user_security_login') }}">Login with an existing user</a>
+            </div>
+        {% else %}
+            <div class="block-demo">
+                <a class="symfony-button-green" href="{{ path('fos_user_security_login') }}">Create a new app</a>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
