@@ -1,10 +1,7 @@
 <?php
 namespace Acme\DemoBundle\Controller;
 
-use Doctrine\Bundle\DoctrineBundle\Registry;
-
 use JMS\DiExtraBundle\Annotation\Inject;
-
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 
@@ -17,10 +14,13 @@ use FOS\RestBundle\Controller\Annotations\RouteResource;
     /**
      * @Inject("doctrine")
      * 
-     * @var Registry
+     * @var Doctrine\Bundle\DoctrineBundle\Registry
      */
     protected $doctrine;
 
+    /**
+     * Generated REST url: /api/users
+     */
     public function cgetAction()
     {
         return $this->doctrine->getRepository('AcmeDemoBundle:User')->findAll();

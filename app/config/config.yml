@@ -85,3 +85,14 @@ fos_rest:
     body_listener: true
     param_fetcher_listener: force
     allowed_methods_listener: true            
+    
+    
+fos_oauth_server:
+    db_driver: orm       
+    client_class:        Acme\DemoBundle\Entity\OAuth\Client
+    access_token_class:  Acme\DemoBundle\Entity\OAuth\AccessToken
+    refresh_token_class: Acme\DemoBundle\Entity\OAuth\RefreshToken
+    auth_code_class:     Acme\DemoBundle\Entity\OAuth\AuthCode
+    service:
+        user_provider: fos_user.user_manager
+    
