@@ -17,17 +17,12 @@ class WelcomeController extends Controller
         return array();
     }
 
-    public function appsAction()
-    {
-        die('aha');
-    }
-
     /**
      * @Template()
      */
     public function createAppAction()
     {
-        $defaultData = array('name' => 'app name');
+        $defaultData = array('name' => 'app name', 'redirect_uri' => 'http://oauth.client/back');
         $form = $this->createFormBuilder($defaultData)
             ->add('name', 'text')
             ->add('redirect_uri', 'url')
@@ -39,7 +34,7 @@ class WelcomeController extends Controller
 
             if ($form->isValid()) {
                 $this->processForm($form);
-                return $this->redirect($this->generateUrl('_apps'));
+                return $this->redirect($this->generateUrl('_welcome'));
             }
         }
 

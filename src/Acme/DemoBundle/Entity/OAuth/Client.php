@@ -26,7 +26,7 @@ class Client extends BaseClient
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Acme\DemoBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Acme\DemoBundle\Entity\User", inversedBy="clients")
      * @ORM\JoinColumn(nullable=false)
      */
     protected $user;
