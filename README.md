@@ -8,4 +8,4 @@ Symfony2 doctrine-backed oauth-server based on the following bundles.
 - [FOSOAuthServerBundle](https://github.com/FriendsOfSymfony/FOSOAuthServerBundle)
 
 
-See [oauth-client](https://github.com/pulse00/oauth-server) for a demo client implementation.
+See [oauth-client](https://github.com/pulse00/oauth-client) for a demo client implementation.
