@@ -2,6 +2,10 @@ api:
     type:     rest
     prefix:   /api
     resource: Acme\DemoBundle\Controller\ApiController
+
+_me:
+    pattern:  /api/me
+    defaults: { _controller: AcmeDemoBundle:Api:me }
     
 _welcome:
     pattern:  /
