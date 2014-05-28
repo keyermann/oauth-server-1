@@ -4,18 +4,25 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
-        strict_requirements: "%kernel.debug%"
-    form:            true
-    csrf_protection: true
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
     validation:      { enable_annotations: true }
-    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    templating:
+        engines: ['twig']
+        #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
-    trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
-    session:         ~
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # handler_id set to null will use default session handler from php.ini
+        handler_id:  ~
+    fragments:       ~
+    http_method_override: true
 
 # Twig Configuration
 twig:
@@ -62,18 +69,16 @@ swiftmailer:
 sensio_framework_extra:
     view:    { annotations: false }
     router:  { annotations: true }
-        
+
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Acme\DemoBundle\Entity\User    
-    
-    
+
 fos_rest:
     format_listener:
-        default_priorities: [json, xml, html, '*/*']
-        fallback_format: json
-        prefer_extension: true
+        rules:
+            - { priorities: ['json', 'xml', 'html', '*/*'], fallback_format: json, prefer_extension: true }
     routing_loader:
         default_format: json    
     view:
@@ -85,8 +90,7 @@ fos_rest:
     body_listener: true
     param_fetcher_listener: force
     allowed_methods_listener: true            
-    
-    
+
 fos_oauth_server:
     db_driver: orm       
     client_class:        Acme\DemoBundle\Entity\OAuth\Client
@@ -95,8 +99,7 @@ fos_oauth_server:
     auth_code_class:     Acme\DemoBundle\Entity\OAuth\AuthCode
     service:
         user_provider: fos_user.user_manager
-    
-    
+
 jms_serializer:
     metadata:
         directories:
